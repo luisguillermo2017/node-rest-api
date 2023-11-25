@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-//import alumnosRoutes from "./routes/alumnos.routes.js";
+import alumnosRoutes from "./routes/alumnos.routes.js";
 import morgan from "morgan";
 
 import config from "./config.js";
@@ -17,6 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Routes
-//app.use("/api", alumnosRoutes);
+app.use("/api", alumnosRoutes);
 
 export default app;
