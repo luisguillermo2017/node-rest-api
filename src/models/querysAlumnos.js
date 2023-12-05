@@ -6,6 +6,10 @@ export const querys = {
     AlumnoInsertar:
     "exec sp_alumno_insertar @nombre = @nombreValor, @apellidos = @apellidosValor",
 
+    //Create de practica para cursos
+    CursoInsertar:
+    "exec sp_curso_insertar @nombre = @nombreValor, @descripcion = @descripcionValor",
+
 
     //Read simple
     getAlumnos: 
@@ -32,10 +36,15 @@ export const querys = {
     getMatriculaById:
     "exec sp_matricula_by_id @id = @idValor",
 
-
     //U
+    Alumno_Actualizar:
+    "exec sp_alumno_actualizar @nombre = @nombreValor, @apellidos = @apellidosValor, @id = @idValor",
 
+    //Update de practica para Curso
+    Curso_Actualizar:
+    "exec sp_curso_Actualizar @nombre = @nombreValor, @descripcion = @descripcionValor, @id = @idValor"
 
     //D
+
 
 }

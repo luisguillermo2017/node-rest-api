@@ -34,13 +34,41 @@ export const AlumnoInsertar = async (request, result) => {
         result.send(error.message);
         
     }
+
+}
+
+//Create de practica para Cursos
+export const CursoInsertar = async (request, result) => {
+
+    //Se desestructura para recibir los valores nombre y apellidos
+    const { nombre } = request.body;
+    const { descripcion } = request.body;
+
+    try {
+
+        const pool = await getConnection();
+
+        const resultCurso = await pool
+        .request()
+        .input("nombreValor", sql.NVarChar , nombre)
+        .input("descripcionValor", sql.NVarChar, descripcion)
+        .query(querys.CursoInsertar);
+
+        return result.json(
+            {
+                "respuesta": "curso creado correctamente",
+                nombre,
+                descripcion
+            }
+        )
+        
+    } catch (error) {
+
+        result.status(500);
+        result.send(error.message);
+        
+    }
     
-
-
-
-
-
-
 }
 
 //Read simple
@@ -187,3 +215,75 @@ export const getMatriculaById = async (request, result) => {
 
 
 }
+
+//U
+export const Alumno_Actualizar = async (request, result) => {
+
+const { nombre } = request.body; 
+const { apellidos } = request.body;
+
+// console.log('nombre: ' + nombre);
+// console.log('apellidos: ' + apellidos);
+// console.log('idRecibido: ' + request.params.idRecibido);
+
+
+try {
+
+  const pool = await getConnection();
+  const resultAlumno = await pool
+    .request()
+    .input("nombreValor", sql.VarChar, nombre)
+    .input("apellidosValor", sql.VarChar, apellidos)
+    .input("idValor", request.params.idRecibido)
+    .query(querys.Alumno_Actualizar);
+
+    //request.params.idRecibido
+
+    //console.log('resultAlumno: ' +  JSON.stringify(resultAlumno) );
+
+  result.json({ 
+    "respuesta": "alumno actualizado correctamente",
+    apellidos,
+     nombre });
+
+} catch (error) {
+
+  result.status(500);
+  result.send(error.message);
+  
+}
+
+}
+
+
+//Update de practica para Curso
+export const Curso_Actualizar = async (request, result) => {
+
+    const { nombre } = request.body; 
+    const { descripcion } = request.body;
+    
+    
+    try {
+    
+      const pool = await getConnection();
+      const resultCurso = await pool
+        .request()
+        .input("nombreValor", sql.VarChar, nombre)
+        .input("descripcionValor", sql.VarChar, descripcion)
+        .input("idValor", request.params.idRecibido)
+        .query(querys.Curso_Actualizar);
+    
+      result.json({ 
+        "respuesta": "curso actualizado correctamente",
+         nombre,
+         descripcion
+         });
+    
+    } catch (error) {
+    
+      result.status(500);
+      result.send(error.message);
+      
+    }
+    
+    }

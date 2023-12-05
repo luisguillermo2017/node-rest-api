@@ -6,7 +6,10 @@ import { getAlumnos,
         getAlumnoById,
         getCursoById,
         getMatriculaById,
-        AlumnoInsertar
+        AlumnoInsertar,
+        CursoInsertar,
+        Alumno_Actualizar,
+        Curso_Actualizar
     } from "../controllers/alumnos.controller.js";
 
 const router = Router();
@@ -15,6 +18,9 @@ const router = Router();
 
 //C
 router.post("/alumnos/AlumnoInsertar", AlumnoInsertar);
+
+//Create de practica para cursos
+router.post("/alumnos/CursoInsertar", CursoInsertar);
 
 //Read simple
 router.get("/alumnos/getAlumnos", getAlumnos);
@@ -35,6 +41,10 @@ router.get("/alumnos/getCursoById/:idRecibido", getCursoById);
 router.get("/alumnos/getMatriculaById/:idRecibido", getMatriculaById);
 
 //U
+router.put("/alumnos/AlumnoActualizar/:idRecibido", Alumno_Actualizar);
+
+//Update de practica para Curso
+router.put("/alumnos/CursoActualizar/:idRecibido", Curso_Actualizar)
 
 //D
 
