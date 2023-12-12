@@ -9,7 +9,9 @@ import { getAlumnos,
         AlumnoInsertar,
         CursoInsertar,
         Alumno_Actualizar,
-        Curso_Actualizar
+        Curso_Actualizar,
+        Alumno_Borrar_By_Id,
+        Curso_Borrar_By_Id
     } from "../controllers/alumnos.controller.js";
 
 const router = Router();
@@ -44,8 +46,12 @@ router.get("/alumnos/getMatriculaById/:idRecibido", getMatriculaById);
 router.put("/alumnos/AlumnoActualizar/:idRecibido", Alumno_Actualizar);
 
 //Update de practica para Curso
-router.put("/alumnos/CursoActualizar/:idRecibido", Curso_Actualizar)
+router.put("/alumnos/CursoActualizar/:idRecibido", Curso_Actualizar);
 
 //D
+router.delete("/alumnos/Alumno_Borrar_By_Id/:idRecibido", Alumno_Borrar_By_Id);
+
+//Delete de practica para Curso
+router.delete("/alumnos/Curso_Borrar_By_Id/:idRecibido", Curso_Borrar_By_Id)
 
 export default router;

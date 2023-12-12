@@ -287,3 +287,59 @@ export const Curso_Actualizar = async (request, result) => {
     }
     
     }
+
+    //Función para borrar un alumno por el id
+    export const Alumno_Borrar_By_Id = async (request, result) =>{
+
+        try {
+
+            const pool =  await getConnection();
+
+            const resultAlumnoBorrado =  await pool
+                .request()
+                .input("idValor", request.params.idRecibido )
+                .query(querys.Alumno_Borrar);
+
+            if(resultAlumnoBorrado.rowsAffected[0] === 0){
+                return result.sendStatus(400);
+            }else{
+                return result.sendStatus(200);
+            }
+            
+        } catch (error) {
+
+            result.status(500);
+            result.send(error.message);
+            
+        }
+
+
+    }
+
+    //Función para borrar un curso por id
+    export const Curso_Borrar_By_Id = async (request, result) =>{
+
+        try {
+
+            const pool =  await getConnection();
+
+            const resultCursoBorrado =  await pool
+                .request()
+                .input("idValor", request.params.idRecibido )
+                .query(querys.Curso_Borrar);
+
+            if(resultCursoBorrado.rowsAffected[0] === 0){
+                return result.sendStatus(400);
+            }else{
+                return result.sendStatus(200);
+            }
+            
+        } catch (error) {
+
+            result.status(500);
+            result.send(error.message);
+            
+        }
+
+
+    }

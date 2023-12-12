@@ -42,9 +42,15 @@ export const querys = {
 
     //Update de practica para Curso
     Curso_Actualizar:
-    "exec sp_curso_Actualizar @nombre = @nombreValor, @descripcion = @descripcionValor, @id = @idValor"
+    "exec sp_curso_Actualizar @nombre = @nombreValor, @descripcion = @descripcionValor, @id = @idValor",
 
     //D
+    Alumno_Borrar:
+    "exec sp_alumno_borrar @id = @idValor",
+
+    //Delete de practica para Curso
+    Curso_Borrar:
+    "exec sp_curso_borrar @id = @idValor"
 
 
 }
